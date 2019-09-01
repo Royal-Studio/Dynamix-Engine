@@ -3,8 +3,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="../bin/js/jquery.js"></script>
-    <script src="../bin/js/engine.js"></script>
+    <link rel="stylesheet" href="../static/js/jquery-ui/jquery-ui.min.css">
+
+    <script src="../static/js/jquery.js"></script>
+    <script src="../static/js/jquery-ui/jquery-ui.min.js"></script>
     <title>EGB-ENGINE</title>
     <style>
 
@@ -49,24 +51,32 @@
   border-top: none;
 }
 
+.ui-widget-header, .ui-state-default, ui-button, .ui-widget-content {
+  background: #2f4257;
+  color: #6AAAC9;
+  border: 1px solid #6AAAC9;
+}
+
 /*==================================================================================================*/
         body{
             margin: 0;
             padding: 0;
             background: #121920;
-            width: 1500px;
+            width: 1400px;
             overflow: hidden;
         }
-        #prop{
-            width: 750px;
-            height: 900px;
+        #left{
+            width: 700px;
+            height: 850px;
             background: #273646;
             float: left;
         }
-        #scene{
-            width: 750px;
-            height: 900px;
+        #right{
+            width: 700px;
+            height: 850px;
             background: #2f4257;
+            position: relative;
+            left: 700px;
         }
     </style>
 </head>
@@ -77,27 +87,63 @@
     </div>
     <!-- Tab content -->
     <div id="file" class="tabcontent">
-        <span>NEW</span>
+        <span id="load-button">LOAD</span>
+        <span id="save-button">SAVE</span>
     </div>
 
 <!--===========================================================================================-->
     <div id="main">
-        <div id="prop">
+        <div id="left">
         </div>
-        <iframe id="scene" src="" frameborder="0" id="scene"></iframe>
+        <div id="right">
+          <iframe id="scene" src="" frameborder="0"></iframe>
+        </div>
     </div>
+<form action="/save" method="POST" style="display: block;">
+  <input id="save" type="text" name="save">
+  <button type="submit" id="submit-save"></button>
+</form>
+<div id="ma-dialog" title="This is ma dialog!">
+  <span>THIS IS MY FRICKIN DIALOG!!!</span>
+</div>
+<button id="open-dialog">OPEN</button>
     <script>
 
-
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-function destroy_window(){
-  var data = {name: "MY_GAME"};
-  var d = pywebview.api.load(data)
-  alert(d.data);
+
+$("#ma-dialog").dialog({
+  autoOpen: false,
+  width: 500,
+  height: 400,
+  modal: true,
+});
+$("#load-button").click(function(){
+  $("#ma-dialog").dialog("open");
+});
+
+function save(data){
+    var save_submit = document.getElementById("submit-save");
+    $("#save").val(JSON.stringify(data));
+    save_submit.click();
 }
 
-var data = {name: pywebview.api.load("MY_GAME")};
-alert(data);
+function load(url){
+    var xhr = new XMLHttpRequest();
+
+    xhr.open('GET', url, true);
+    xhr.send();
+
+    xhr.onload = function(){
+      if (xhr.status != 200){
+        console.log("ERROR!");
+      } else {
+        return xhr.response;
+      }
+    };
+}
+
+var data = load("load");
+console.log(data);
 
 //===============================================================================================//
 
