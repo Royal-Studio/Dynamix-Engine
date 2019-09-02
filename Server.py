@@ -1,5 +1,7 @@
 from flask import Flask, request, render_template, redirect
 from json import loads, dumps
+import yaml
+import os
 
 app = Flask(__name__)
 
@@ -7,26 +9,17 @@ app = Flask(__name__)
 def index():
     return render_template("index.html")
 
-@app.route("/test", methods=["GET", "POST"])
-def test():
-    j = {
-        "Hello": "HOHO!"
-    }
-    return render_template("index.html", jn=j)
-
 @app.route("/save", methods=["POST"])
 def save():
-    data = request.form["save"]
-    data = data.replace("'", '"')
-    data = loads(data)
-    print(data["Hello"])
+    
+    data = request.form["data"]
+    data = yaml.load(data)
 
-    return redirect("/test")
+    return redirect("/")
 
-@app.route("/load", methods=["GET", "POST"])
-def load():
+@app.route("/load/<name>", methods=["GET"])
+def load(name):
     d = dumps({"lala": "koko"})
-    print(d)
     return d
 
 if __name__ == "__main__":

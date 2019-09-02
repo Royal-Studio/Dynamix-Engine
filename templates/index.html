@@ -39,7 +39,7 @@
 
 /* Create an active/current tablink class */
 .tab button.active {
-  background-color: rgb(73, 121, 144);
+  background-color: rgb(62, 103, 122);
 }
 
 /* Style the tab content */
@@ -55,6 +55,32 @@
   background: #2f4257;
   color: #6AAAC9;
   border: 1px solid #6AAAC9;
+}
+
+input, textarea {
+  background: #425770;
+  color: #6AAAC9;
+  border: 1px solid #6AAAC9;
+  width: 450px;
+  height: 50px;
+  font-weight: bold;
+}
+
+textarea {
+  position: relative;
+  width: 680px;
+  height: 405px;
+
+  font-size: 25px;
+  font-weight: normal;
+}
+
+button {
+  background: #425770;
+  color: #6AAAC9;
+  border: none;
+  font-weight: bold;
+  font-size: 25px;
 }
 
 /*==================================================================================================*/
@@ -87,63 +113,67 @@
     </div>
     <!-- Tab content -->
     <div id="file" class="tabcontent">
-        <span id="load-button">LOAD</span>
-        <span id="save-button">SAVE</span>
+        <span id="new-button" title="NEW PROJECT">NEW |</span>
+        <span id="load-button" title="LOAD PROJECT"> LOAD |</span>
+        <span id="save-button" title="SAVE PROJECT"> SAVE |</span>
+        <span id="run-button" title="RUN GAME"> RUN</span>
     </div>
 
 <!--===========================================================================================-->
     <div id="main">
         <div id="left">
+          <textarea name="config" id="config" cols="30" rows="10" style="left: 10px; top: 10px;" placeholder="config"></textarea>
+          <textarea name="preload" id="preload" cols="30" rows="10" style="left: 10px; top: 30px;" placeholder="preload"></textarea>
         </div>
         <div id="right">
-          <iframe id="scene" src="" frameborder="0"></iframe>
+          <textarea name="create" id="create" cols="30" rows="10" style="left: 10px; top: -840px;" placeholder="create"></textarea>
+          <textarea name="update" id="update" cols="30" rows="10" style="left: 10px; top: -820px;" placeholder="update"></textarea>
         </div>
     </div>
-<form action="/save" method="POST" style="display: block;">
-  <input id="save" type="text" name="save">
-  <button type="submit" id="submit-save"></button>
-</form>
-<div id="ma-dialog" title="This is ma dialog!">
-  <span>THIS IS MY FRICKIN DIALOG!!!</span>
+
+<div id="run-game" title="Your Awesome Game!"><br><br>
+  <iframe src="" frameborder="0" style="position: relative;"></iframe>
 </div>
-<button id="open-dialog">OPEN</button>
-    <script>
+
+<script>
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
-$("#ma-dialog").dialog({
+var name;
+$("#config").append("name: MyAwesomeGame\nwidth: 800\nheight: 600");
+
+$("#run-game").dialog({
   autoOpen: false,
-  width: 500,
-  height: 400,
+  width: 800,
+  height: 600,
   modal: true,
 });
-$("#load-button").click(function(){
-  $("#ma-dialog").dialog("open");
+
+$("#run-button").click(function(){
+  $("#run-game").dialog("open");
+})
+
+$("#save-button").click(function(){
+  data = {data: $("#config").val()}
+  try{
+    save(data);
+  } catch(err){
+    alert("YOU HAVE NOT LOADED OR CREATED ANY PROJECT YET!");
+  }
 });
 
 function save(data){
-    var save_submit = document.getElementById("submit-save");
-    $("#save").val(JSON.stringify(data));
-    save_submit.click();
+    $.post("/save", data, function(){
+      console.log(data);
+    });
 }
 
-function load(url){
-    var xhr = new XMLHttpRequest();
-
-    xhr.open('GET', url, true);
-    xhr.send();
-
-    xhr.onload = function(){
-      if (xhr.status != 200){
-        console.log("ERROR!");
-      } else {
-        return xhr.response;
-      }
-    };
+function load(name){
+    $.get("/load/" + name, function(data, status){
+      console.log("Status of loading" + status);
+      return data;
+    });
 }
-
-var data = load("load");
-console.log(data);
 
 //===============================================================================================//
 
@@ -169,6 +199,7 @@ function openCity(evt, cityName) {
 }
 
 //===============================================================================================//
+
     </script>
 </body>
 </html>
