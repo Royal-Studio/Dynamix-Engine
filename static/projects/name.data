@@ -1,1 +1,1 @@
-[]
+{"MyGame": {"config": "name: MyGame\nwidth: 800\nheight: 600", "preload": "this.add.image(\"HEHE\", \"HOOH\");\nthis.add.image(\"HAHA\", \"HIEhI\");", "create": "this.load.image(\"HOAHADG\", 502, 102);", "update": ""}}
