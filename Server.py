@@ -1,12 +1,13 @@
-from flask import Flask, request, render_template, redirect
+from flask import Flask, request, render_template, redirect, send_file
 from json import loads, dumps
 from static.lib.compiler import Compile
+import shutil
 import yaml
 import os
 
 app = Flask(__name__)
 cur_dir = os.getcwd()
-project_dir = os.path.join(cur_dir, "static")
+project_dir = os.path.join(cur_dir, "templates")
 project_dir = os.path.join(project_dir, "projects")
 names_data_path = os.path.join(project_dir, "name.data")
 
@@ -25,6 +26,7 @@ def save():
     
     final = {
         "config": request.form["config"],
+        "init": request.form["init"],
         "preload": request.form["preload"],
         "create": request.form["create"],
         "update": request.form["update"]
@@ -62,18 +64,43 @@ def run():
     with open(names_data_path, "r") as f:
         names_data = f.read()
         names_data = loads(names_data)
-    
+
     data = names_data[config["name"]]
-    
-    c = Compile(config, data['preload'], data['create'], data['update'])
+
+    c = Compile(config, data['init'], data['preload'], data['create'], data['update'])
     c = c.compile()
 
-    name = os.path.join(project_dir, str(config["name"] + ".html"))
+    name = os.path.join(project_dir, str(config["name"]))
+
+    if os.path.isdir(name):
+        pass
+    else:
+        os.mkdir(name)
+    
+    name = os.path.join(name, str(config["name"] + ".html"))
 
     with open(name, "w") as f:
         f.write(c)
+    
+    response = {
+        "path": str("/" + config["name"]),
+        "width": config["width"],
+        "height": config["height"]
+    }
 
-    return "SUCCESS"
+    return dumps(response)
+
+@app.route("/<name>.html", methods=["GET", "POST"])
+def render_game(name):
+    project_dir = os.path.join("projects", str(name))
+    project_dir = os.path.join(project_dir, str(name + ".html"))
+
+    return render_template(project_dir)
+
+@app.route("/asset/sky.png", methods=["GET", "POST"])
+def test1():
+    path = os.path.join(os.getcwd(), "templates/projects/My Awesome Game/asset/sky.png")
+    return send_file(path)
 
 if __name__ == "__main__":
     app.run(debug=True)

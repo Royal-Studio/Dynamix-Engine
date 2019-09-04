@@ -96,6 +96,13 @@ button {
   font-size: 25px;
 }
 
+iframe{
+  margin: 0;
+  position: relative;
+  left: -10px;
+  top: -50px;
+}
+
 /*==================================================================================================*/
         body{
             margin: 0;
@@ -125,6 +132,11 @@ button {
     <!-- Tab links -->
     <div class="tab">
         <button id="file-menu" class="tablinks" onclick="openCity(event, 'file')">FILE</button>
+        <button id="config-menu" class="tablinks" onclick="openCode(event, 'config-tab')">CONFIG</button>
+        <button id="init-menu" class="tablinks" onclick="openCode(event, 'init-tab')">INIT</button>
+        <button id="preload-menu" class="tablinks" onclick="openCode(event, 'preload-tab')">PRELOAD</button>
+        <button id="create-menu" class="tablinks" onclick="openCode(event, 'create-tab')">CREATE</button>
+        <button id="update-menu" class="tablinks" onclick="openCode(event, 'update-tab')">UPDATE</button>
     </div>
 
     <!-- Tab content -->
@@ -136,34 +148,32 @@ button {
 
 <!--===========================================================================================-->
     <div id="main">
-        <div id="left">
-          <br>
-          <span class="names">CONFIG:</span>
-          <br>
+        <div class="tab">
+            
+        </div>
+        <div id="config-tab" class="tabcontent">
           <textarea name="config" id="config" cols="30" rows="10" style="left: 10px; top: 10px;" placeholder="config"></textarea>
-          <br>
-          <span class="names">PRELOAD:</span>
-          <br>
+        </div>
+        <div id="init-tab" class="tabcontent">
+            <textarea name="init" id="init" cols="30" rows="10" style="left: 10px; top: 30px;" placeholder="init"></textarea>
+          </div>
+        <div id="preload-tab" class="tabcontent">
           <textarea name="preload" id="preload" cols="30" rows="10" style="left: 10px; top: 30px;" placeholder="preload"></textarea>
         </div>
-        <div id="right">
-          <br>
-          <span class="names">CREATE:</span>
-          <br>
+        <div id="create-tab" class="tabcontent">
           <textarea name="create" id="create" cols="30" rows="10" style="left: 10px; top: -840px;" placeholder="create"></textarea>
-          <br>
-          <span class="names">UPDATE:</span>
-          <br>
+        </div>
+        <div id="update-tab" class="tabcontent">
           <textarea name="update" id="update" cols="30" rows="10" style="left: 10px; top: -820px;" placeholder="update"></textarea>
         </div>
     </div>
 
 <div id="run-game" title="Your Awesome Game!"><br><br>
-  <iframe src="" frameborder="0" style="position: relative;"></iframe>
+  <iframe id="game-frame" src="" frameborder="0" style="position: relative;"></iframe>
 </div>
 
 <div id="load-game" title="Load Game!"><br><br>
-  <input type="text" name="load-name" id="load-name"><br>
+  <input type="text" name="load-name" id="load-name"><br><br><br>
   <button id="load-game-button">LOAD</button>
 </div>
 
@@ -176,7 +186,6 @@ function to_normal(func){
 
 function to_editor(obj, mode){
   var create_editor = CodeMirror.fromTextArea(obj, {
-    lineNumbers: true,
     mode:  mode,
     theme: "twilight",
     showCursorWhenSelecting: true,
@@ -185,6 +194,7 @@ function to_editor(obj, mode){
 }
 
 var config_obj = document.getElementById("config");
+var init_obj = document.getElementById("init");
 var preload_obj = document.getElementById("preload");
 var create_obj = document.getElementById("create");
 var update_obj = document.getElementById("update");
@@ -192,32 +202,31 @@ var update_obj = document.getElementById("update");
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
 var config = "name: My Awesome Game\nwidth: 800\nheight: 600";
+var init = "";
 var preload = "";
 var create = "";
 var update = "";
 
 $("#config").append(config);
+$("#init").append(init);
 $("#preload").append(preload);
 $("#create").append(create);
 $("#update").append(update);
 
-config_editor = to_editor(config_obj, "yaml");
-preload_editor = to_editor(preload_obj, "javascript");
-create_editor = to_editor(create_obj, "javascript");
-update_editor = to_editor(update_obj, "javascript");
+
 
 $("#run-game").dialog({
   autoOpen: false,
-  width: 800,
-  height: 600,
-  modal: true,
+  width: 1000,
+  height: 800,
+  modal: false,
 });
 
 $("#load-game").dialog({
   autoOpen: false,
-  width: 800,
-  height: 600,
-  modal: true,
+  width: 550,
+  height: 300,
+  modal: false,
 });
 
 $("#run-button").click(function(){
@@ -238,6 +247,7 @@ $("#load-game-button").click(function(){
 $("#save-button").click(function(){
   data = {
     config: config_editor.getValue(),
+    init: init_editor.getValue(),
     preload: preload_editor.getValue(),
     create: create_editor.getValue(),
     update: update_editor.getValue(),
@@ -248,16 +258,31 @@ $("#save-button").click(function(){
 $("#run-button").click(function(){
   data = {
     config: config_editor.getValue(),
+    init: init_editor.getValue(),
     preload: preload_editor.getValue(),
     create: create_editor.getValue(),
     update: update_editor.getValue(),
   };
-  save("/run", data);
+  run("/run", data);
 });
 
 function save(url, data){
     $.post(url, data, function(){
       console.log("Saving..." + data);
+    });
+}
+
+function run(url, data_to_send){
+    $.post(url, data_to_send, function(data, status){
+      console.log("Recieved..." + data + "\nStatus: " + status);
+
+      data = JSON.parse(data);
+      var game_frame = document.getElementById("game-frame");
+
+      game_frame.setAttribute("src", data["path"] + ".html");
+      game_frame.style.width = data["width"];
+      game_frame.style.height = data["height"];
+
     });
 }
 
@@ -267,11 +292,13 @@ function load(name){
       var final_data = JSON.parse(data);
 
       var config = final_data["config"];
+      var init = final_data["init"];
       var preload = final_data["preload"];
       var create = final_data["create"];
       var update = final_data["update"];
 
       config_editor.setValue(config);
+      init_editor.setValue(init);
       preload_editor.setValue(preload);
       create_editor.setValue(create);
       update_editor.setValue(update);
@@ -302,12 +329,39 @@ function openCity(evt, cityName) {
   evt.currentTarget.className += " active";
 }
 
-//===============================================================================================//
+function openCode(evt, cityName) {
+  // Declare all variables
+  var i, tabcontent, tablinks;
 
-config_editor.setSize(680,400);
-preload_editor.setSize(680,400);
-create_editor.setSize(680,400);
-update_editor.setSize(680,400);
+  // Get all elements with class="tabcontent" and hide them
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+
+  // Get all elements with class="tablinks" and remove the class "active"
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+
+  // Show the current tab, and add an "active" class to the button that opened the tab
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+
+//===============================================================================================//
+config_editor = to_editor(config_obj, "yaml");
+init_editor = to_editor(init_obj, "javascript");
+preload_editor = to_editor(preload_obj, "javascript");
+create_editor = to_editor(create_obj, "javascript");
+update_editor = to_editor(update_obj, "javascript");
+
+config_editor.setSize(1370,900);
+init_editor.setSize(1370,900);
+preload_editor.setSize(1370,900);
+create_editor.setSize(1370,900);
+update_editor.setSize(1370,900);
 
     </script>
 </body>
