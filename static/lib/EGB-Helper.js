@@ -2,12 +2,12 @@ function load_image(self, name, url){
     self.load.image(name, url);
 }
 
-function add_image_standard(self, name, x, y){
-    self.add.image(name, x, y).setOrigin(0,0);
+function add_image_standard(self, name, x, y, scale=1){
+    self.add.image(x, y, name).setOrigin(0,0).setScale(scale).refreshBody;
 }
 
-function add_image(self, name, x, y){
-    self.add.image(name, x, y);
+function add_image(self, name, x, y, scale=1){
+    self.add.image(x, y, name).setScale(scale).refreshBody;
 }
 
 function load_sprite(self, name, url, width, height){

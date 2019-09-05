@@ -6,10 +6,13 @@ import yaml
 import os
 
 app = Flask(__name__)
+app.config["SEND_FILE_MAX_AGE_DEFAULT"] = 0
 cur_dir = os.getcwd()
 project_dir = os.path.join(cur_dir, "templates")
 project_dir = os.path.join(project_dir, "projects")
 names_data_path = os.path.join(project_dir, "name.data")
+current_proj = os.path.join(cur_dir, "static")
+current_proj = os.path.join(current_proj, "cur_proj.elham")
 
 @app.route("/", methods=["GET", "POST"])
 def index():
@@ -36,6 +39,9 @@ def save():
     
     with open(names_data_path, "w") as f:
         f.write(dumps(names_data))
+    
+    with open(current_proj, "w") as f:
+        f.write(str(config["name"]))
 
     return redirect("/")
 
@@ -47,6 +53,9 @@ def load():
     with open(names_data_path, "r") as f:
         names_data = f.read()
         names_data = loads(names_data)
+    
+    with open(current_proj, "w") as f:
+        f.write(str(name))
     
     try:
         data = names_data[name]
@@ -97,10 +106,40 @@ def render_game(name):
 
     return render_template(project_dir)
 
-@app.route("/asset/sky.png", methods=["GET", "POST"])
-def test1():
-    path = os.path.join(os.getcwd(), "templates/projects/My Awesome Game/asset/sky.png")
-    return send_file(path)
+@app.route("/import", methods=["GET", "POST"])
+def importer():
+
+    with open(current_proj, "r") as f:
+        name_of_proj = f.read()
+
+    if request.method == "POST":
+        path = os.path.join(os.getcwd(), "templates")
+        path = os.path.join(path, "projects")
+        path = os.path.join(path, name_of_proj)
+        asset_path = os.path.join(path, "asset")
+        if os.path.isdir(asset_path):
+            f = request.files["file"]
+            f.save(str(os.path.join(asset_path, f.filename)))
+            return redirect("/")
+        else:
+            os.chdir(path)
+            os.mkdir("asset")
+            f = request.files["file"]
+            f.save(str(os.path.join(asset_path, f.filename)))
+            return redirect("/")
+
+@app.route("/asset/<name>", methods=["GET", "POST"])
+def test1(name):
+    with open(current_proj, "r") as f:
+        name_of_proj = f.read()
+    
+    project_dir = os.path.join(os.getcwd(), "templates")
+    project_dir = os.path.join(project_dir, "projects")
+    project_dir = os.path.join(project_dir, name_of_proj)
+    project_dir = os.path.join(project_dir, "asset")
+    project_dir = os.path.join(project_dir, name)
+
+    return send_file(project_dir)
 
 if __name__ == "__main__":
     app.run(debug=True)

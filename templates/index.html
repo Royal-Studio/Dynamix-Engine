@@ -4,128 +4,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="../static/js/jquery-ui/jquery-ui.min.css">
-    <link rel="stylesheet" href="../static/js/editor/lib/codemirror.css">
-    <link rel="stylesheet" href="../static/js/editor/theme/twilight.css">
+    <link rel="stylesheet" href="../static/css/index.css">
 
     <script src="../static/js/jquery.js"></script>
     <script src="../static/js/jquery-ui/jquery-ui.min.js"></script>
-    <script src="../static/js/editor/lib/codemirror.js"></script>
-    <script src="../static/js/editor/mode/javascript/javascript.js"></script>
-    <script src="../static/js/editor/mode/yaml/yaml.js"></script>
 
     <title>EGB-ENGINE</title>
-    <style>
-
-/*==================================================================================================*/
-
-/* Style the tab */
-.tab {
-  overflow: hidden;
-  border: 1px solid #6AAAC9;
-  background-color: #121920;
-}
-
-/* Style the buttons that are used to open the tab content */
-.tab button {
-  color: #6AAAC9;
-  font-weight: bold;
-  background-color: inherit;
-  float: left;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  padding: 14px 16px;
-  transition: 0.3s;
-}
-
-/* Change background color of buttons on hover */
-.tab button:hover {
-  background-color: #121920;
-}
-
-/* Create an active/current tablink class */
-.tab button.active {
-  background-color: rgb(62, 103, 122);
-}
-
-/* Style the tab content */
-.tabcontent {
-  color: #6AAAC9;
-  display: none;
-  padding: 6px 12px;
-  border: 1px solid #6AAAC9;
-  border-top: none;
-}
-
-.ui-widget-header, .ui-state-default, ui-button, .ui-widget-content {
-  background: #2f4257;
-  color: #6AAAC9;
-  border: 1px solid #6AAAC9;
-}
-
-input, textarea {
-  background: #425770;
-  color: #6AAAC9;
-  border: 1px solid #6AAAC9;
-  width: 450px;
-  height: 50px;
-  font-weight: bold;
-}
-
-textarea {
-  position: relative;
-  width: 680px;
-  height: 405px;
-
-  font-size: 25px;
-  font-weight: normal;
-}
-
-.names {
-  color: #6AAAC9;
-
-  font-size: 25px;
-  font-weight: normal;
-}
-
-button {
-  background: #425770;
-  color: #6AAAC9;
-  border: none;
-  font-weight: bold;
-  font-size: 25px;
-}
-
-iframe{
-  margin: 0;
-  position: relative;
-  left: -10px;
-  top: -50px;
-}
-
-/*==================================================================================================*/
-        body{
-            margin: 0;
-            padding: 0;
-            background: #121920;
-            width: 1400px;
-            overflow: hidden;
-        }
-        #left{
-            width: 700px;
-            height: 850px;
-            position: relative;
-            left: 10px;;
-            float: left;
-        }
-        #right{
-            width: 700px;
-            height: 850px;
-            position: relative;
-            left: 710px;
-            top: -823px;
-        }
-    </style>
 </head>
 <body onload='document.getElementById("file-menu").click();'>
 
@@ -143,7 +27,8 @@ iframe{
     <div id="file" class="tabcontent">
         <span id="load-button" title="LOAD PROJECT"> LOAD |</span>
         <span id="save-button" title="SAVE PROJECT"> SAVE |</span>
-        <span id="run-button" title="RUN GAME"> RUN</span>
+        <span id="run-button" title="RUN GAME"> RUN |</span>
+        <span id="import-button" title="IMPORT ASSET">| IMPORT</span>
     </div>
 
 <!--===========================================================================================-->
@@ -152,217 +37,37 @@ iframe{
             
         </div>
         <div id="config-tab" class="tabcontent">
-          <textarea name="config" id="config" cols="30" rows="10" style="left: 10px; top: 10px;" placeholder="config"></textarea>
+            <textarea name="config" id="config" cols="30" rows="10" placeholder="config"></textarea>
         </div>
         <div id="init-tab" class="tabcontent">
-            <textarea name="init" id="init" cols="30" rows="10" style="left: 10px; top: 30px;" placeholder="init"></textarea>
-          </div>
+            <textarea name="init" id="init" cols="30" rows="10" placeholder="init"></textarea>
+        </div>
         <div id="preload-tab" class="tabcontent">
-          <textarea name="preload" id="preload" cols="30" rows="10" style="left: 10px; top: 30px;" placeholder="preload"></textarea>
+            <textarea name="preload" id="preload" cols="30" rows="10" placeholder="preload"></textarea>
         </div>
         <div id="create-tab" class="tabcontent">
-          <textarea name="create" id="create" cols="30" rows="10" style="left: 10px; top: -840px;" placeholder="create"></textarea>
+            <textarea name="create" id="create" cols="30" rows="10" placeholder="create"></textarea>
         </div>
         <div id="update-tab" class="tabcontent">
-          <textarea name="update" id="update" cols="30" rows="10" style="left: 10px; top: -820px;" placeholder="update"></textarea>
+            <textarea name="update" id="update" cols="30" rows="10" placeholder="update"></textarea>
         </div>
     </div>
 
-<div id="run-game" title="Your Awesome Game!"><br><br>
-  <iframe id="game-frame" src="" frameborder="0" style="position: relative;"></iframe>
-</div>
+    <div id="run-game" title="Your Awesome Game!"><br><br>
+        <iframe id="game-frame" src="" frameborder="0" style="position: relative;"></iframe>
+    </div>
 
-<div id="load-game" title="Load Game!"><br><br>
-  <input type="text" name="load-name" id="load-name"><br><br><br>
-  <button id="load-game-button">LOAD</button>
-</div>
+    <div id="load-game" title="Load Game!"><br><br>
+        <input type="text" name="load-name" id="load-name"><br><br><br>
+        <button id="load-game-button">LOAD</button>
+    </div>
+    <div id="import-asset" title="Import Asset!"><br><br>
+        <form action="/import" method="POST" enctype="multipart/form-data">
+            <input type="file" name="file"><br><br><br>
+            <button type="submit" id="import-asset-button">IMPORT</button>
+        </form>
+    </div>
 
-<script>
-///////////////////////////////////////////////////////////////////////////////////////////////////
-
-function to_normal(func){
-  func.toTextArea();
-}
-
-function to_editor(obj, mode){
-  var create_editor = CodeMirror.fromTextArea(obj, {
-    mode:  mode,
-    theme: "twilight",
-    showCursorWhenSelecting: true,
-  });
-  return create_editor;
-}
-
-var config_obj = document.getElementById("config");
-var init_obj = document.getElementById("init");
-var preload_obj = document.getElementById("preload");
-var create_obj = document.getElementById("create");
-var update_obj = document.getElementById("update");
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
-
-var config = "name: My Awesome Game\nwidth: 800\nheight: 600";
-var init = "";
-var preload = "";
-var create = "";
-var update = "";
-
-$("#config").append(config);
-$("#init").append(init);
-$("#preload").append(preload);
-$("#create").append(create);
-$("#update").append(update);
-
-
-
-$("#run-game").dialog({
-  autoOpen: false,
-  width: 1000,
-  height: 800,
-  modal: false,
-});
-
-$("#load-game").dialog({
-  autoOpen: false,
-  width: 550,
-  height: 300,
-  modal: false,
-});
-
-$("#run-button").click(function(){
-  $("#run-game").dialog("open");
-});
-
-$("#load-button").click(function(){
-  $("#load-game").dialog("open");
-});
-
-$("#load-game-button").click(function(){
-  var name = $("#load-name").val();
-  var data = {name: name};
-  var response = load(data);
-  console.log(response);
-});
-
-$("#save-button").click(function(){
-  data = {
-    config: config_editor.getValue(),
-    init: init_editor.getValue(),
-    preload: preload_editor.getValue(),
-    create: create_editor.getValue(),
-    update: update_editor.getValue(),
-  };
-  save("/save", data);
-});
-
-$("#run-button").click(function(){
-  data = {
-    config: config_editor.getValue(),
-    init: init_editor.getValue(),
-    preload: preload_editor.getValue(),
-    create: create_editor.getValue(),
-    update: update_editor.getValue(),
-  };
-  run("/run", data);
-});
-
-function save(url, data){
-    $.post(url, data, function(){
-      console.log("Saving..." + data);
-    });
-}
-
-function run(url, data_to_send){
-    $.post(url, data_to_send, function(data, status){
-      console.log("Recieved..." + data + "\nStatus: " + status);
-
-      data = JSON.parse(data);
-      var game_frame = document.getElementById("game-frame");
-
-      game_frame.setAttribute("src", data["path"] + ".html");
-      game_frame.style.width = data["width"];
-      game_frame.style.height = data["height"];
-
-    });
-}
-
-function load(name){
-    $.post("/load", name, function(data, status){
-      console.log("Loading...:" + name + "\n Recieved: " + data + "\nStatus: " + status);
-      var final_data = JSON.parse(data);
-
-      var config = final_data["config"];
-      var init = final_data["init"];
-      var preload = final_data["preload"];
-      var create = final_data["create"];
-      var update = final_data["update"];
-
-      config_editor.setValue(config);
-      init_editor.setValue(init);
-      preload_editor.setValue(preload);
-      create_editor.setValue(create);
-      update_editor.setValue(update);
-
-    });
-}
-
-//===============================================================================================//
-
-function openCity(evt, cityName) {
-  // Declare all variables
-  var i, tabcontent, tablinks;
-
-  // Get all elements with class="tabcontent" and hide them
-  tabcontent = document.getElementsByClassName("tabcontent");
-  for (i = 0; i < tabcontent.length; i++) {
-    tabcontent[i].style.display = "none";
-  }
-
-  // Get all elements with class="tablinks" and remove the class "active"
-  tablinks = document.getElementsByClassName("tablinks");
-  for (i = 0; i < tablinks.length; i++) {
-    tablinks[i].className = tablinks[i].className.replace(" active", "");
-  }
-
-  // Show the current tab, and add an "active" class to the button that opened the tab
-  document.getElementById(cityName).style.display = "block";
-  evt.currentTarget.className += " active";
-}
-
-function openCode(evt, cityName) {
-  // Declare all variables
-  var i, tabcontent, tablinks;
-
-  // Get all elements with class="tabcontent" and hide them
-  tabcontent = document.getElementsByClassName("tabcontent");
-  for (i = 0; i < tabcontent.length; i++) {
-    tabcontent[i].style.display = "none";
-  }
-
-  // Get all elements with class="tablinks" and remove the class "active"
-  tablinks = document.getElementsByClassName("tablinks");
-  for (i = 0; i < tablinks.length; i++) {
-    tablinks[i].className = tablinks[i].className.replace(" active", "");
-  }
-
-  // Show the current tab, and add an "active" class to the button that opened the tab
-  document.getElementById(cityName).style.display = "block";
-  evt.currentTarget.className += " active";
-}
-
-//===============================================================================================//
-config_editor = to_editor(config_obj, "yaml");
-init_editor = to_editor(init_obj, "javascript");
-preload_editor = to_editor(preload_obj, "javascript");
-create_editor = to_editor(create_obj, "javascript");
-update_editor = to_editor(update_obj, "javascript");
-
-config_editor.setSize(1370,900);
-init_editor.setSize(1370,900);
-preload_editor.setSize(1370,900);
-create_editor.setSize(1370,900);
-update_editor.setSize(1370,900);
-
-    </script>
+    <script src="../static/js/index.js"></script>
 </body>
 </html>

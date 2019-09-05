@@ -4,8 +4,9 @@ class Editor{
         self.name = name
     }
     setValue(value){
-        self.$(self.name).clear();
-        self.$(self.name).append(value);
+        console.log("RUNNED");
+        self.$(self.name).empty();
+        self.$(self.name).val(value);
     }
     getValue(){
         return self.$(self.name).val();
@@ -82,22 +83,22 @@ $("#load-game-button").click(function(){
   
 $("#save-button").click(function(){
     data = {
-        config: config_editor.getValue(),
-        init: init_editor.getValue(),
-        preload: preload_editor.getValue(),
-        create: create_editor.getValue(),
-        update: update_editor.getValue(),
+        config: $("#config").val(),
+        init: $("#init").val(),
+        preload: $("#preload").val(),
+        create: $("#create").val(),
+        update: $("#update").val(),
     };
     save("/save", data);
 });
   
 $("#run-button").click(function(){
     data = {
-        config: config_editor.getValue(),
-        init: init_editor.getValue(),
-        preload: preload_editor.getValue(),
-        create: create_editor.getValue(),
-        update: update_editor.getValue(),
+        config: $("#config").val(),
+        init: $("#init").val(),
+        preload: $("#preload").val(),
+        create: $("#create").val(),
+        update: $("#update").val(),
     };
     run("/run", data);
 });
@@ -132,12 +133,21 @@ function load(name){
         var preload = final_data["preload"];
         var create = final_data["create"];
         var update = final_data["update"];
-  
-        config_editor.setValue(config);
-        init_editor.setValue(init);
-        preload_editor.setValue(preload);
-        create_editor.setValue(create);
-        update_editor.setValue(update);
+
+        $("#config").empty();
+        $("#config").val(config);
+        
+        $("#init").empty();
+        $("#init").val(init);
+        
+        $("#preload").empty();
+        $("#preload").val(preload);
+
+        $("#create").empty();
+        $("#create").val(create);
+
+        $("#update").empty();
+        $("#update").val(update);
   
     });
 }
