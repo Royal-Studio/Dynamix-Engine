@@ -1,7 +1,9 @@
 import os
 
 class Compile():
-    def __init__(self, config, init, preload, create, update):
+    def __init__(self, ELang, lang, config, init, preload, create, update):
+        self.ELang = ELang
+        self.lang = lang
         self.config = config
         self.init = init
         self.preload = preload
@@ -65,15 +67,33 @@ class Compile():
         config_last = "scene: { preload: preload, create: create, update: update }\n}\n"
         config += config_last
 
-        first_parts += "\n" + str(self.init) + "\n"
+        if self.lang['init'] == 'JS':
+            first_parts += "\n" + str(self.init) + "\n"
+        else:
+            result = self.ELang(str(self.init)).compile()
+            first_parts += '\n' + result + '\n'
 
         first_parts += config
 
         first_parts += "\nvar game = new Phaser.Game(config);"
+
+        if self.lang['preload'] == 'JS':
+            first_parts += "\nfunction preload(){\n" + self.preload + "\n}"
+        else:
+            result = self.ELang(str(self.preload)).compile()
+            first_parts += "\nfunction preload(){\n" + result + "\n}"
         
-        first_parts += "\nfunction preload(){\n" + self.preload + "\n}"
-        first_parts += "\nfunction create(){\n" + self.create + "\n}"
-        first_parts += "\nfunction update(){\n" + self.update + "\n}"
+        if self.lang['create'] == 'JS':
+            first_parts += "\nfunction create(){\n" + self.create + "\n}"
+        else:
+            result = self.ELang(str(self.create)).compile()
+            first_parts += "\nfunction create(){\n" + result + "\n}"
+        
+        if self.lang['update'] == 'JS':
+            first_parts += "\nfunction update(){\n" + self.update + "\n}"
+        else:
+            result = self.ELang(str(self.update)).compile()
+            first_parts += "\nfunction update(){\n" + result + "\n}"       
         
         first_parts += last_parts
 

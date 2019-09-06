@@ -1,0 +1,29 @@
+show Data
+
+variable name = Data
+
+add 5 and 2 in add
+
+subtract 2 from 5 in sub
+
+multiply 5 by 10 in mul
+
+divide 10 by 100 in div
+
+if 1 == 1 then
+
+show name
+
+end if
+
+define func with args
+
+show args
+
+end
+
+function func args
+
+function-variable myFunc = function_to_save('args')
+
+native myCode('myArgs');

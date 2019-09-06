@@ -1,6 +1,7 @@
 from flask import Flask, request, render_template, redirect, send_file
 from json import loads, dumps
 from static.lib.compiler import Compile
+from static.lib.ELangJS import ELang
 import shutil
 import yaml
 import os
@@ -76,7 +77,7 @@ def run():
 
     data = names_data[config["name"]]
 
-    c = Compile(config, data['init'], data['preload'], data['create'], data['update'])
+    c = Compile(ELang, config['language'], config, data['init'], data['preload'], data['create'], data['update'])
     c = c.compile()
 
     name = os.path.join(project_dir, str(config["name"]))

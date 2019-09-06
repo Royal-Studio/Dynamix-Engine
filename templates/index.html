@@ -15,12 +15,12 @@
 
     <!-- Tab links -->
     <div class="tab">
-        <button id="file-menu" class="tablinks" onclick="openCity(event, 'file')">FILE</button>
-        <button id="config-menu" class="tablinks" onclick="openCode(event, 'config-tab')">CONFIG</button>
-        <button id="init-menu" class="tablinks" onclick="openCode(event, 'init-tab')">INIT</button>
-        <button id="preload-menu" class="tablinks" onclick="openCode(event, 'preload-tab')">PRELOAD</button>
-        <button id="create-menu" class="tablinks" onclick="openCode(event, 'create-tab')">CREATE</button>
-        <button id="update-menu" class="tablinks" onclick="openCode(event, 'update-tab')">UPDATE</button>
+        <button id="file-menu" class="tablinks" onclick="openCity(event, 'file')" title="FILE MENU">FILE</button>
+        <button id="config-menu" class="tablinks" onclick="openCode(event, 'config-tab')" title="CONFIGURATION">CONFIG</button>
+        <button id="init-menu" class="tablinks" onclick="openCode(event, 'init-tab')" title="INITIALIZATION CODE">INIT</button>
+        <button id="preload-menu" class="tablinks" onclick="openCode(event, 'preload-tab')" title="PRELOAD CODE">PRELOAD</button>
+        <button id="create-menu" class="tablinks" onclick="openCode(event, 'create-tab')" title="CREATION CODE">CREATE</button>
+        <button id="update-menu" class="tablinks" onclick="openCode(event, 'update-tab')" title="UPDATE CODE">UPDATE</button>
     </div>
 
     <!-- Tab content -->
@@ -31,25 +31,24 @@
         <span id="import-button" title="IMPORT ASSET">| IMPORT</span>
     </div>
 
-<!--===========================================================================================-->
     <div id="main">
         <div class="tab">
             
         </div>
         <div id="config-tab" class="tabcontent">
-            <textarea name="config" id="config" cols="30" rows="10" placeholder="config"></textarea>
+            <textarea name="config" id="config" cols="30" rows="10" placeholder="config" spellcheck="false"></textarea>
         </div>
         <div id="init-tab" class="tabcontent">
-            <textarea name="init" id="init" cols="30" rows="10" placeholder="init"></textarea>
+            <textarea name="init" id="init" cols="30" rows="10" placeholder="init" spellcheck="false"></textarea>
         </div>
         <div id="preload-tab" class="tabcontent">
-            <textarea name="preload" id="preload" cols="30" rows="10" placeholder="preload"></textarea>
+            <textarea name="preload" id="preload" cols="30" rows="10" placeholder="preload" spellcheck="false"></textarea>
         </div>
         <div id="create-tab" class="tabcontent">
-            <textarea name="create" id="create" cols="30" rows="10" placeholder="create"></textarea>
+            <textarea name="create" id="create" cols="30" rows="10" placeholder="create" spellcheck="false"></textarea>
         </div>
         <div id="update-tab" class="tabcontent">
-            <textarea name="update" id="update" cols="30" rows="10" placeholder="update"></textarea>
+            <textarea name="update" id="update" cols="30" rows="10" placeholder="update" spellcheck="false"></textarea>
         </div>
     </div>
 

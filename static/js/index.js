@@ -21,7 +21,8 @@ var preload_obj = document.getElementById("preload");
 var create_obj = document.getElementById("create");
 var update_obj = document.getElementById("update");
   
-var config = "name: My Awesome Game\nwidth: 800\nheight: 600";
+var config = "name: My Awesome Game\nwidth: 800\nheight: 600\n\n\
+language:\n  init: JS\n  preload: JS\n  create: JS\n  update: JS\n";
 var init = "";
 var preload = "";
 var create = "";
@@ -82,6 +83,10 @@ $("#load-game-button").click(function(){
 });
   
 $("#save-button").click(function(){
+    save_button();
+});
+
+function save_button(){
     data = {
         config: $("#config").val(),
         init: $("#init").val(),
@@ -90,7 +95,7 @@ $("#save-button").click(function(){
         update: $("#update").val(),
     };
     save("/save", data);
-});
+}
   
 $("#run-button").click(function(){
     data = {
@@ -151,6 +156,32 @@ function load(name){
   
     });
 }
+
+$(window).bind('keydown', function(event){
+    if (event.ctrlKey || event.metaKey){
+        switch (String.fromCharCode(event.which).toLowerCase()){
+            case 's':
+                event.preventDefault();
+                save_button();
+                break;
+            
+            case 'l':
+                event.preventDefault();
+                $("#load-game").dialog("open");
+                break;
+            
+            case 'r':
+                event.preventDefault();
+                document.getElementById("run-button").click();
+                break;
+            
+            case 'i':
+                event.preventDefault();
+                $("#import-asset").dialog("open");
+                break;
+        }
+    }
+});
   
 //===============================================================================================//
   
