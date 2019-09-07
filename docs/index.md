@@ -204,3 +204,5 @@ This Tab is run for infinite and mostly contain data about detections like if th
 Does Not have any auto generated code
 
 Can be used with `JS` and `EL`
+
+# MORE DOC WILL BE ADDED SOON! YOU CAN ALSO REFER TO PHASER'S DOCS AS ANY CODE COMPATIBLE WITH THEM CAN BE COMPATIBLE WITH US TOO!
