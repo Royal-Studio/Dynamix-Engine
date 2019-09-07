@@ -2,6 +2,9 @@
 A Game Engine For Humans!
 
 # About
+
+[Docs](https://elhamaryanpur.github.io/EGB-Engine/)
+
 This is a game engine that uses Phaser JS as core and builds desktop and mobile games with ELang programming language that will be soon released. Currently coming with IDE and under development for some time. New updates will be commited every day. Let me know if you want to contribute! It really helps ;)
 
 The original idea for this project was and is to build a game engine for [Royal Studios](https://discord.gg/g63g9zJ)!
