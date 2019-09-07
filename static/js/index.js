@@ -1,18 +1,3 @@
-class Editor{
-    constructor(name){
-        var self = this
-        self.name = name
-    }
-    setValue(value){
-        console.log("RUNNED");
-        self.$(self.name).empty();
-        self.$(self.name).val(value);
-    }
-    getValue(){
-        return self.$(self.name).val();
-    }
-}
-
 ///////////////////////////////////////////////////////////////////////////////////////////////////
   
 var config_obj = document.getElementById("config");
@@ -34,13 +19,6 @@ $("#preload").append(preload);
 $("#create").append(create);
 $("#update").append(update);
 
-var config_editor = new Editor("#config");
-var init_editor = new Editor("#init");
-var preload_editor = new Editor("#preload");
-var create_editor = new Editor("#create");
-var update_editor = new Editor("#update");
-  
-  
 $("#run-game").dialog({
     autoOpen: false,
     width: 1000,
@@ -62,6 +40,13 @@ $("#import-asset").dialog({
     modal: false,
 });
 
+$("#export-game").dialog({
+    autoOpen: false,
+    width: 550,
+    height: 305,
+    modal: false,
+});
+
 $("#run-button").click(function(){
     $("#run-game").dialog("open");
 });
@@ -73,7 +58,11 @@ $("#load-button").click(function(){
 $("#import-button").click(function(){
     $("#import-asset").dialog("open");
 });
-  
+
+$("#export-button").click(function(){
+    $("#export-game").dialog("open");
+});
+
 $("#load-game-button").click(function(){
     var name = $("#load-name").val();
     var data = {name: name};
@@ -113,7 +102,7 @@ function save(url, data){
         console.log("Saving..." + data);
     });
 }
-  
+
 function run(url, data_to_send){
     $.post(url, data_to_send, function(data, status){
         console.log("Recieved..." + data + "\nStatus: " + status);
@@ -178,6 +167,11 @@ $(window).bind('keydown', function(event){
             case 'i':
                 event.preventDefault();
                 $("#import-asset").dialog("open");
+                break;
+            
+            case 'e':
+                event.preventDefault();
+                $("#export-game").dialog("open");
                 break;
         }
     }

@@ -28,7 +28,8 @@
         <span id="load-button" title="LOAD PROJECT"> LOAD |</span>
         <span id="save-button" title="SAVE PROJECT"> SAVE |</span>
         <span id="run-button" title="RUN GAME"> RUN |</span>
-        <span id="import-button" title="IMPORT ASSET">| IMPORT</span>
+        <span id="import-button" title="IMPORT ASSET">| IMPORT |</span>
+        <span id="export-button" title="EXPORT PROJECT"> EXPORT</span>
     </div>
 
     <div id="main">
@@ -60,10 +61,18 @@
         <input type="text" name="load-name" id="load-name"><br><br><br>
         <button id="load-game-button">LOAD</button>
     </div>
+
     <div id="import-asset" title="Import Asset!"><br><br>
         <form action="/import" method="POST" enctype="multipart/form-data">
             <input type="file" name="file"><br><br><br>
             <button type="submit" id="import-asset-button">IMPORT</button>
+        </form>
+    </div>
+
+    <div id="export-game" title="Export Game!"><br><br>
+        <form action="/export" method="POST">
+            <input type="text" name="export-name" id="export-name" placeholder="LINK TO EXPORT FOLDER"><br><br><br>
+            <button type="submit" id="export-game-button">LOAD</button>
         </form>
     </div>
 
