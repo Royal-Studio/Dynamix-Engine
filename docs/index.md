@@ -30,11 +30,13 @@ MAIN AUTHOR:
 You can setup EGB in this simple 4 steps!
 
 1. First make sure you have Python 3.6.x or above is installed. then:
+
 ```
 pip install flask
 ```
 
 2. Clone this repository:
+
 ```
 mkdir EGB-Engine
 cd EGB-Engine
@@ -43,6 +45,7 @@ git clone https://www.github.com/ElhamAryanpur/EGB-Engine.git
 ```
 
 3. Run the server:
+
 ```
 python server.py
 ```
@@ -134,6 +137,7 @@ function sayHello(){
     alert("Hello World!"); 
 }
 ```
+
  as `JS` example
 
 ```
@@ -155,21 +159,25 @@ Does not have automatically generated code
 Can be used with `JS` and `EL`
 
 ### Normal JS:
+
 ```
 this.load.image('sky', 'asset/sky.png');
 ```
 
 ### Using Helper:
+
 ```
 load_image(this, 'sky', 'asset/sky.png');
 ```
 
 ### Normal ELang:
+
 ```
 function this.load.image 'sky' 'asset/sky.png'
 ```
 
 ### Using Helper:
+
 ```
 function load_image this 'sky' 'asset/sky.png'
 ```
@@ -182,18 +190,25 @@ Does Not Have Automatically Generated Code
 Can be used with `JS` and `EL`
 
 ### Normal JS:
+
 ```
 this.add.image(0, 0, 'sky').setOrigin(0, 0).setScale(1).refreshBody();
 ```
+
 ### Using Helper:
+
 ```
 add_image_standard(this, 0, 0, 'sky', scale=1);
 ```
+
 ### ELang:
+
 ```
 function this.add.image 0 0 'sky'
 ```
+
 ### Using Helper:
+
 ```
 function add_image_standard this 0 0 'sky' scale=1
 ```

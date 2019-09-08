@@ -30,16 +30,16 @@ function keys_cursors_init(self){
     return cursor
 }
 
-function keys_cursors_event(cursor, left, right, up, down, otherwise){
+function keys_cursors_event(cursor, left_func, right_func, up_func, down_func, otherwise_func){
     if (cursor.left.isDown){
-        left();
+        left_func();
     } else if (cursor.right.isDown){
-        right();
+        right_func();
     } else if (cursor.up.isDown){
-        up();
+        up_func();
     } else if (cursor.down.isDown){
-        down();
+        down_func();
     } else {
-        otherwise();
+        otherwise_func();
     }
 }

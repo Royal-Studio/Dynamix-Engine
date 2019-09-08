@@ -50,39 +50,76 @@ function keys_cursors_init(self){
     return cursor
 }
 
-function keys_cursors_event(cursor, left, right, up, down, otherwise){
+function keys_cursors_event(cursor, left_func, right_func, up_func, down_func, otherwise_func){
     if (cursor.left.isDown){
-        left();
+        left_func();
     } else if (cursor.right.isDown){
-        right();
+        right_func();
     } else if (cursor.up.isDown){
-        up();
+        up_func();
     } else if (cursor.down.isDown){
-        down();
+        down_func();
     } else {
-        otherwise();
+        otherwise_func();
     }
 }
 
 
 
+var cursor;
+var player;
 
+function left(){
+  player.setVelocityX(-160);
+}
+
+function right(){
+  player.setVelocityX(160);
+}
+
+function up(){
+  player.setVelocityY(-160);
+}
+
+function down(){
+  player.setVelocityY(160);
+}
+
+function otherwise(){
+  console.log("OTHERWISE!");
+}
 var False = false;
              var config = {
-type: Phaser.AUTO, width: 800, height: 600, scene: { preload: preload, create: create, update: update }
+type: Phaser.AUTO, width: 800, height: 600, physics: {'default': 'arcade', 'arcade': {'gravity': {'y': 0}, 'debug': False}}, scene: { preload: preload, create: create, update: update }
 }
 
 var game = new Phaser.Game(config);
 function preload(){
-this.load.image( 'sky', 'asset/sky.png');
-
+this.load.image('sky', 'asset/sky.png');
 }
 function create(){
-this.add.image( 0, 0, 'sky');
+var player = this.physics.add.sprite(10, 10, 'sky');
 
+var cursor = this.input.keyboard.createCursorKeys();
 }
 function update(){
+if (cursor.left.isDown){
 
+    player.setVelocityX(-160);
+
+} else if (cursor.right.isDown){
+
+    player.setVelocityX(160);
+
+} else if (cursor.up.isDown){
+
+    player.setVelocityY(-160);
+
+} else if (cursor.down.isDown){
+
+    player.setVelocityY(160);
+
+}
 }
 </script>
 </body>
