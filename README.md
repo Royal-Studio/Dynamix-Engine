@@ -33,23 +33,6 @@ I know the core of the engine is updated regularly, but for the sake of EGB-Engi
 # Thank you! Contact me if need any help, suggestion, ...
 [Facebook](https://www.facebook.com/elham.aryanpur.10) or [Instagram](https://www.instagram.com/elham_aryanpur)
 
-# UPDATES:
-1. Keyboard shortcuts added: ctrl + (s, l, r, i, e) for different actions! ctrl + s for saving, ctrl + l for loading, ctrl + i for import, ctrl + r for running the game, ctrl + e for export (which will come soon!)
+# UPDATES AND FUTURE PLANS
 
-2. ELang support: ELang is a programming language that is aimed to look just like Human's English language in syntax and support! it automates most of things for you. Firstly build with python, then turned to c++ with ELang++ version (will be uploaded to github soon), and not ELang++ has a port to JavaScript with name of ELangJS too for sake of this engine! A complete syntax example can be seen on this repo's static/lib/ELangJS_syntax.elpp.
-
-3. Added Importing And Retriving Asset support (because it is not allowed natively on browsers to access external data).
-
-# Will Feature in next update:
-
-1. Documentation
-
-2. Exporting and publishing support
-
-3. Examples and game templates to start making right away
-
-4. A WYSIWYG editor
-
-5. Events, to do coding graphically
-
-6. Some UI updates...
+check out [Progress](https://github.com/users/ElhamAryanpur/projects/1)!
