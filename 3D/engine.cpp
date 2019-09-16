@@ -40,6 +40,14 @@ int main(){
         return -1;
     }
 
+    // Creating Vertex Array Object ( VAO )
+    GLuint VertexArrayID;
+    glGenVertexArrays(1, &VertexArrayID);
+    glBindVertexArray(VertexArrayID);
+
+    // An array of 3 vectors which represents 3 vertices
+    //static
+
     // Ensure we can capture escape key being pressed below
     glfwSetInputMode( window, GLFW_STICKY_KEYS, GL_TRUE );
 
