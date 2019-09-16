@@ -3,7 +3,7 @@ A Game Engine For Humans!
 
 # Quick Links
 
-## By Continuing You Agree To My [EULA](https://github.com/ElhamAryanpur/EGB-Engine/blob/master/LICENSE.md)
+## By Continuing You Agree To My [License](https://github.com/ElhamAryanpur/EGB-Engine/blob/master/LICENSE.md)
 
 [Docs](https://elhamaryanpur.github.io/EGB-Engine/)
 
