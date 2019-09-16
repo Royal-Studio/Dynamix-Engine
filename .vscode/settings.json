@@ -1,4 +1,18 @@
 {
     "python.pythonPath": "/usr/bin/python3",
-    "c-cpp-compile-run.cpp-flags": "-Wall -Wextra -lGLEW -lglfw -lGL -lX11 -lXi -lXrandr -lXxf86vm -lXinerama -lXcursor -lrt -lm -pthread"
+    "c-cpp-compile-run.cpp-flags": "-Wall -Wextra -lGLEW -lglfw -lGL -lX11 -lXi -lXrandr -lXxf86vm -lXinerama -lXcursor -lrt -lm -pthread",
+    "workbench.colorCustomizations": {
+        "activityBar.background": "#243241",
+        "activityBar.foreground": "#e7e7e7",
+        "activityBar.inactiveForeground": "#e7e7e799",
+        "activityBarBadge.background": "#90506e",
+        "activityBarBadge.foreground": "#e7e7e7",
+        "titleBar.activeBackground": "#121920",
+        "titleBar.inactiveBackground": "#12192099",
+        "titleBar.activeForeground": "#e7e7e7",
+        "titleBar.inactiveForeground": "#e7e7e799",
+        "statusBar.background": "#121920",
+        "statusBarItem.hoverBackground": "#243241",
+        "statusBar.foreground": "#e7e7e7"
+    }
 }
