@@ -3,6 +3,8 @@ A Game Engine For Humans!
 
 # Quick Links
 
+## By Continuing You Agree To My [EULA](https://github.com/ElhamAryanpur/EGB-Engine/blob/master/LICENSE.md)
+
 [Docs](https://elhamaryanpur.github.io/EGB-Engine/)
 
 [Progress](https://github.com/users/ElhamAryanpur/projects/1)
