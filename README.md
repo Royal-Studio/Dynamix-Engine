@@ -1,4 +1,4 @@
-![Logo](logo/logo.png)
+![Logo](logo/linkedin_banner_image_1.png)
 
 # EGB-Engine
 A Game Engine For Humans!
