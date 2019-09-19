@@ -1,3 +1,5 @@
+![Logo](logo/logo.png)
+
 # EGB-Engine
 A Game Engine For Humans!
 
