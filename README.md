@@ -22,6 +22,10 @@ This engine uses WebGL at core. if WebGL was not supported, it will automaticall
 
 I know the core of the engine is updated regularly, but for the sake of EGB-Engine, I'll go with only one version and then bring new features with new updates.
 
+## Native Tech
+
+Currently, I am working on a custom 3D render that is aimed to be easy and fast! currently getting it to work on linux as I am on linux, but will be doing updates for other platforms too such as windows and mac! Because I am doing this myself, do not expect it to have realistic graphics be default not saying you can't achieve yourself! I will always allow you to do everything yourself too!
+
 # Give a star for motivational support ;)
 
 # Thank you! Contact me if need any help, suggestion, ...
