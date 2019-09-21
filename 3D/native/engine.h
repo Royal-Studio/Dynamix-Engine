@@ -3,10 +3,13 @@
 // Include Standard Headers
 #include <stdio.h>
 #include <stdlib.h>
-#include <functional>
+#include <vector>
 
 // Include GLAD
 //#include "include/glad/glad.h"
+
+// Include GLEW
+#include <GL/glew.h>
 
 // Include GLFW
 #include <GLFW/glfw3.h>
@@ -23,7 +26,14 @@
 using namespace glm;
 using namespace std;
 
-GLFWwindow* window; // This is a global var
+// GLOBAL VARS
+GLFWwindow* window;
+vector<float> verticesVector;
+
+// Before Draw Call
+void BeforeDraw();
+// Draw Call
+void Draw(float* vertex);
 
 int init(
 
@@ -61,10 +71,14 @@ int init(
         return -1;
     }
 
+    // The View Port having 0,0 as top left corner of screen
     glViewport(0, 0, Width, Height);
 
     /* Make the window's context current */
     glfwMakeContextCurrent(window);
+
+    BeforeDraw();
+    float* vertices = verticesVector.data();
 
     /* Loop until the user closes the window */
     while (!glfwWindowShouldClose(window))
@@ -72,6 +86,8 @@ int init(
         /* Render here */
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
+
+        Draw(vertices);
 
         /* Swap front and back buffers */
         glfwSwapBuffers(window);
