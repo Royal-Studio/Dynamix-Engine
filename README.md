@@ -1,5 +1,7 @@
 ![Logo](logo/linkedin_banner_image_1.png)
 
+This project will get a rest for some times... make sure you open up an issue if I was gone for long so that I get back on development!
+
 # EGB-Engine
 A Game Engine For Humans!
 

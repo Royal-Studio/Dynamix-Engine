@@ -1,5 +1,3 @@
-
-
 var EGB = BABYLON;
 
 var canvas = document.getElementById("renderCanvas");
@@ -20,7 +18,7 @@ function createScene(){
     camera.angularSensibility = 5000;
     camera.applyGravity = true;
     // Set the ellipsoid around the camera
-    camera.ellipsoid = new EGB.Vector3(0.5, 0.5, 0.5);
+    camera.ellipsoid = new EGB.Vector3(1, 1, 1);
     //camera.ellipsoidOffset = 0.5;
     camera.checkCollisions = true;
     camera._needMoveForGravity = true;
@@ -29,7 +27,7 @@ function createScene(){
     var light2 = new EGB.PointLight('light2', new EGB.Vector3(0,1,-1), scene);
 
     var plane = EGB.MeshBuilder.CreateBox("myBox", {width: 15, height: 0.1, depth: 15}, scene);
-    plane.position.y = -1;
+    plane.position.y = -2;
     plane.checkCollisions = true;
     plane.freezeWorldMatrix();
 
