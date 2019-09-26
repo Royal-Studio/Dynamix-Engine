@@ -1,9 +1,7 @@
 ![Logo](logo/linkedin_banner_image_1.png)
 
-This project will get a rest for some times... make sure you open up an issue if I was gone for long so that I get back on development!
-
 # EGB-Engine
-A Game Engine For Humans!
+A Game Engine For Humans! Built for [Royal Studios](https://discord.gg/g63g9zJ)!
 
 # Quick Links
 
@@ -13,20 +11,7 @@ A Game Engine For Humans!
 
 [Progress](https://github.com/users/ElhamAryanpur/projects/1)
 
-# About
-
-This is a game engine that is web based and builds desktop and mobile games with ELang programming language and JavaScript. Currently coming with IDE and under development for some time. New updates will be commited every day. Let me know if you want to contribute! It really helps ;)
-
-The original idea for this project was and is to build a game engine for [Royal Studios](https://discord.gg/g63g9zJ)!
-
-# Technology
-This engine uses WebGL at core. if WebGL was not supported, it will automatically use Canvas. The editor is made with python. The target platforms are any platform that can render HTML file. Other techs used will be in the lib directory.
-
-I know the core of the engine is updated regularly, but for the sake of EGB-Engine, I'll go with only one version and then bring new features with new updates.
-
-## Native Tech
-
-Currently, I am working on a custom 3D render that is aimed to be easy and fast! currently getting it to work on linux as I am on linux, but will be doing updates for other platforms too such as windows and mac! Because I am doing this myself, do not expect it to have realistic graphics be default not saying you can't achieve yourself! I will always allow you to do everything yourself too!
+# The Project Is Under Development For 3D!
 
 # Give a star for motivational support ;)
 
