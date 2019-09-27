@@ -1,14 +1,19 @@
 var EGB = BABYLON;
+var editor = new Editor(EGB);
 
 var canvas = document.getElementById("renderCanvas");
-canvas.setAttribute("width", window.innerWidth);
-canvas.setAttribute('height', window.innerHeight);
+canvas.style.width = "800px";
+canvas.style.height = "600px";
 
 var engine = new EGB.Engine(canvas, true);
+
+canvas.style.width = "100%";
+canvas.style.height = "100%";
 
 function createScene(){
 
     var scene = new EGB.Scene(engine);
+    editor.scene = scene;
 
     var camera = new EGB.UniversalCamera('camera', new EGB.Vector3(0, 2, -10), scene);
     camera.setTarget(EGB.Vector3.Zero());
@@ -17,19 +22,14 @@ function createScene(){
     camera.angularSensibility = 5000;
 
     var light1 = new EGB.HemisphericLight('light1', new EGB.Vector3(1,1,0), scene);
-    //var light2 = new EGB.PointLight('light2', new EGB.Vector3(0,1,-1), scene);
 
-    var sphere  = new EGB.MeshBuilder.CreateSphere('sphere', {}, scene);
-
+    var sphere = editor.NewMesh({
+        type: "sphere",
+        name: "sp",
+        config: {}
+    });
+    //var sphere  = new EGB.MeshBuilder.CreateSphere('sphere', {}, scene);
     var plane = EGB.MeshBuilder.CreateBox("myBox", {width: 15, height: 0.1, depth: 15}, scene);
-
-
-    var gizmoManager = new BABYLON.GizmoManager(scene);
-    gizmoManager.positionGizmoEnabled = true;
-    gizmoManager.boundingBoxGizmoEnabled = true;
-    gizmoManager.gizmos.positionGizmo.updateGizmoRotationToMatchAttachedMesh = false;
-
-    gizmoManager.attachableMeshes = [sphere, plane];
 
     return scene;
 

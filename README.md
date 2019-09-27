@@ -3,21 +3,17 @@
 # EGB-Engine
 A Game Engine For Humans! Built for [Royal Studios](https://discord.gg/g63g9zJ)!
 
-# Quick Links
+The Project Is Under Development For 3D!
 
-## By Continuing You Agree To My [EULA](https://github.com/ElhamAryanpur/EGB-Engine/blob/master/LICENSE.md)
+## Quick Links
+
+### By Continuing You Agree To My [EULA](https://github.com/ElhamAryanpur/EGB-Engine/blob/master/LICENSE.md)
 
 [Docs](https://elhamaryanpur.github.io/EGB-Engine/)
 
 [Progress](https://github.com/users/ElhamAryanpur/projects/1)
 
-# The Project Is Under Development For 3D!
+## Give a star for motivational support ;)
 
-# Give a star for motivational support ;)
-
-# Thank you! Contact me if need any help, suggestion, ...
+ Thank you! Contact me if need any help, suggestion, ...
 [Facebook](https://www.facebook.com/elham.aryanpur.10) or [Instagram](https://www.instagram.com/elham_aryanpur)
-
-# UPDATES AND FUTURE PLANS
-
-check out [Progress](https://github.com/users/ElhamAryanpur/projects/1)!
