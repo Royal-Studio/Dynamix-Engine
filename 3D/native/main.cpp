@@ -5,6 +5,7 @@ int make_resources(void){
     vertex_and_element_init(vertices, element);
 
     // Make Textures And Shaders
+    
 
     return 1;
 }
