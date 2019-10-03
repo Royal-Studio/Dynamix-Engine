@@ -5,6 +5,17 @@
     color: #6AAAC9;
     border: 1px solid #6AAAC9;
 }
+
+.no-close .ui-dialog-titlebar-close {
+    display: none;
+}
+
+#tab{
+    color: #6AAAC9;
+    background: white;
+    text-decoration: none;
+    z-index: 1;
+}
   
 input, textarea {
     background: #2e3e52;
@@ -50,18 +61,26 @@ body{
     margin: 0;
     padding: 0;
     background: #121920;
-    overflow: hidden;
+
 }
 
 /*==================================================================================================*/
 
-#CODE{
+#LEVEL{
+    position: relative;
+}
+
+#one{
+    width: 200px;
+    height: 50px;
+    background: #425770;
+    border: none;
+    color: #6AAAC9;
+    font-size: 20px;
+    font-weight: bold;
     float: left;
 }
-#LEVEL{
-    float: right;
-}
-#event{
+.two{
     width: 200px;
     height: 50px;
     background: #425770;
@@ -74,4 +93,13 @@ body{
     width: 200px;
     height: 50px;
     float: right;
+}
+
+.menu-button{
+    background: #2f4257;
+    color: #6AAAC9;
+    width: 150px;
+    padding: 20px;
+    font-weight: bold;
+    float: left;
 }

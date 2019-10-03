@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="shortcut icon" href="logo/logo_main.png" type="image/x-icon">
     
-    <link rel="stylesheet" href="../static/css/index.css">
     <link rel="stylesheet" href="../static/js/jquery-ui/jquery-ui.css">
 
     <script src="../static/js/jquery.js"></script>
@@ -13,15 +12,24 @@
     <script src="../static/js/engine/egbcore.min.js"></script>
     <script src="../static/js/engine/egbcore.loaders.min.js"></script>
     <script src="../static/js/engine/egbcore.objFileLoader.min.js"></script>
+    <script src="../static/js/engine/functions.js"></script>
+    <script src="../static/js/engine/clientHelper.js"></script>
+
+    <link rel="stylesheet" href="../static/css/index.css">
 
     <title>EGB-ENGINE</title>
 </head>
 <body>
+    <div id="menu">
+        <div id="menu-level" class="menu-button" style="width: 80px;">LEVEL</div>
+        <div id="menu-code" class="menu-button" style="width: 80px;">CODE</div>
+        <div id="menu-save" class="menu-button" style="width: 80px;">SAVE</div>
+    </div>
     <div id="CODE"></div>
     <div id="LEVEL">
         <canvas id="renderCanvas">YOUR BROWSER DOES NOT SUPPORT US!</canvas>
-        <script src="../static/js/engine/engine.js"></script>
     </div>
     <script src="../static/js/index.js"></script>
+    <script src="../static/js/engine/engine.js"></script>
 </body>
 </html>

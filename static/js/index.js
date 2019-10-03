@@ -1,39 +1,62 @@
-document.getElementById("LEVEL").style.width = window.innerWidth / 2;
 var code = document.getElementById("CODE");
-code.style.width = window.innerWidth / 2;
 code.setAttribute("style", "overflow: auto;");
 code.style.height = window.innerHeight;
-code.style.width = window.innerWidth / 2;
-
-var colors = ['#007a99', '#008080', '#005266', '#279191', '#006080'];
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-function newEvent(setting){
-    var element = document.createElement(setting.type);
-    element.style.height = "200px";
-    element.style.background = colors[Math.floor(Math.random() * 3)];
-    element.style.border = "7px solid #425770";
-    selectEvent(element);
-    newEventButton(element);
-    code.appendChild(element);
-}
-
-function selectEvent(name){
-    var options = "<select id='event'>";
-    options += "\n<option value='0'>NewMesh</option>";
-    name.innerHTML = options;
-}
-
-function newEventButton(element){
-    var btn = document.createElement("BUTTON");
-    btn.innerHTML = "NEW EVENT";
-    btn.setAttribute("class", "button");
-    btn.setAttribute("onclick", "newEvent({type: 'div'})");
-
-    element.appendChild(btn);
-}
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 newEvent({type: "div", bg: "#6AAAC9"});
+
+$(window).bind('keydown', function(event) {
+    if (event.ctrlKey || event.metaKey) {
+        switch (String.fromCharCode(event.which).toLowerCase()) {
+
+            case 's':
+                check_stuff();
+                return false;
+
+        }
+    }
+});
+
+$("#LEVEL").dialog({
+    title: "LEVEL",
+    position: {
+        my: "left bottom",
+        at: "left bottom"
+    },
+    width: 800,
+    height: 600
+});
+
+$("#CODE").dialog({
+    title: "CODE",
+    position: {
+        my: "right center",
+        at: "right center"
+    },
+    width: 800,
+    height: 600,
+    minWidth: 800,
+    minHeight: 600
+});
+
+$("#menu").dialog({
+    title: "MENU",
+    position: {
+        my: "top",
+        at: "top"
+    },
+    maxWidth: 800,
+    maxHeight: 160,
+    minWidth: 800,
+    minHeight: 160,
+    dialogClass: 'no-close'
+});
+
+$("#menu-level").click(function(){
+    $("#LEVEL").dialog("open");
+});
+$("#menu-code").click(function(){
+    $("#CODE").dialog("open");
+});
+$("#menu-save").click(function(){
+    check_stuff();
+});
