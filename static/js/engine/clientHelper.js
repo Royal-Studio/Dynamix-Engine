@@ -29,12 +29,24 @@ function getID(){
     return ids2;
 }
 
+function saveData(){
+    var data = [];
+    var ids = getID();
+
+    for (var i = 0; i < ids.length; i++){
+        var element = document.getElementById(ids[i]);
+        data.push(element);
+        
+    }
+    return data;
+}
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 function newEvent(setting){
     var element = document.createElement(setting.type);
     var id = 354260 + getID().length;
-    element.style.height = "200px";
+    element.style.height = "250px";
     element.style.background = colors[Math.floor(Math.random() * 5)];
     element.style.border = "7px solid #425770";
     element.setAttribute('id', id);
@@ -70,21 +82,28 @@ function check_stuff(){
         var value = event[0].options[event[0].selectedIndex].value;
 
         if (value == 0){
-            var element = GetElementInsideContainer(id, id + "two");
+            var element = document.getElementById(id + "two");
             var options = values['0'](id);
-            if (element.length == undefined){
+            if (element == null){
                 parent.appendChild(options);
+            } else {
+                if (element.getAttribute('name') == options.getAttribute('name')){}
+                else{
+                    parent.replaceChild(options, element);
+                }
             }
         }
 
         if (value == 1){
-            var element = GetElementInsideContainer(id, id + "CodeArea");
+            var element = document.getElementById(id + "two");
             var options = values['1'](id);
-            if (element.length == undefined){
+            if (element == null){
                 parent.appendChild(options);
             } else {
-                console.log(element);
-                parent.replaceChild(element[0], options);
+                if (element.getAttribute('name') == options.getAttribute('name')){}
+                else{
+                    parent.replaceChild(options, element);
+                }
             }
         }
     }

@@ -2,6 +2,7 @@ function MAIN_OBJECTS_MeshBuilder(id){
     var select = document.createElement("SELECT");
     select.setAttribute("id", id + "two");
     select.setAttribute('class', 'two');
+    select.setAttribute('name', 'MAIN_OBJECTS_MeshBuilder');
 
     var option = document.createElement("OPTION");
     option.setAttribute("value", "0");
@@ -20,20 +21,18 @@ function MAIN_OBJECTS_MeshBuilder(id){
 
 function MAIN_OBJECTS_CodeArea(id){
     var code = document.createElement("textarea");
-    code.setAttribute("id", id + "CodeArea");
-    code.setAttribute("style", "border: 0px;");
+    code.setAttribute("id", id + "two");
+    code.setAttribute("style", "border: 0px; width: 100%; height: 200px; resize: none;");
+    code.setAttribute('name', 'MAIN_OBJECTS_CodeArea')
 
     return code;
 }
 
-class options{
-    constructor(){}
-
 //====================================MeshBuilder=============================================//
-    createSphere(){
-        var sphereObject = document.createElement("div");
-        sphereObject.id = 'CreateSphere';
-        var name = document.createElement("INPUT");
-        name.name = "name";
-    }
+
+function OPTIONS_CreateSphere(){
+    var sphereObject = document.createElement("div");
+    sphereObject.id = 'CreateSphere';
+    var name = document.createElement("INPUT");
+    name.name = "name";
 }

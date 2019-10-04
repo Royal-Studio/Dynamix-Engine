@@ -10,6 +10,8 @@ $(window).bind('keydown', function(event) {
 
             case 's':
                 check_stuff();
+                data = saveData();
+                compile(data);
                 return false;
 
         }
