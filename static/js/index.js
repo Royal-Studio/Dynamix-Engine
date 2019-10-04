@@ -11,6 +11,9 @@ $(window).bind('keydown', function(event) {
             case 's':
                 check_stuff();
                 data = saveData();
+                return false;
+
+            case 'r':
                 compile(data);
                 return false;
 
@@ -61,4 +64,7 @@ $("#menu-code").click(function(){
 });
 $("#menu-save").click(function(){
     check_stuff();
+});
+$("#menu-run").click(function(){
+    compile(data);
 });
