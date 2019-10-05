@@ -2,9 +2,9 @@ var code = document.getElementById("CODE");
 code.setAttribute("style", "overflow: auto;");
 code.style.height = window.innerHeight;
 
-newEvent({type: "div", bg: "#6AAAC9"});
+//newEvent({type: "div", bg: "#6AAAC9"});
 
-$(window).bind('keydown', function(event) {
+/*$(window).bind('keydown', function(event) {
     if (event.ctrlKey || event.metaKey) {
         switch (String.fromCharCode(event.which).toLowerCase()) {
 
@@ -19,7 +19,7 @@ $(window).bind('keydown', function(event) {
 
         }
     }
-});
+});*/
 
 $("#LEVEL").dialog({
     title: "LEVEL",
@@ -62,12 +62,10 @@ $("#menu-level").click(function(){
 $("#menu-code").click(function(){
     $("#CODE").dialog("open");
 });
+/*
 $("#menu-save").click(function(){
     check_stuff();
 });
 $("#menu-run").click(function(){
     compile(data);
-});
-
-//document.getElementById("menu-save").style.order = [0];
-//document.getElementById("menu-run").style.order = [1];
+});*/
