@@ -70,6 +70,11 @@ body{
     position: relative;
 }
 
+#EVENTS-PARENT{
+    list-style-type: none;
+    list-style: none;
+}
+
 #one{
     width: 200px;
     height: 50px;

@@ -1,5 +1,6 @@
 var colors = ['#007a99', '#008080', '#005266', '#279191', '#006080'];
 var ids = [];
+var eventList = document.getElementById("EVENTS-PARENT");
 
 var values = {
     '0': MAIN_OBJECTS_MeshBuilder,
@@ -21,10 +22,11 @@ function GetElementInsideContainer(containerID, childID) {
 }
 
 function getID(){
-    var nodes = document.getElementById("CODE").childNodes;
+    var nodes = document.getElementById("EVENTS-PARENT").childNodes;
     var ids2 = [];
     for (var i = 0; i < nodes.length; i++){
         ids2.push(nodes[i].id);
+        console.log(nodes[i]);
     }
     return ids2;
 }
@@ -44,6 +46,7 @@ function saveData(){
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 function newEvent(setting){
+    var elementHead = document.createElement('li');
     var element = document.createElement(setting.type);
     var id = 354260 + getID().length;
     element.style.height = "250px";
@@ -52,7 +55,8 @@ function newEvent(setting){
     element.setAttribute('id', id);
     selectOne(element);
     newEventButton(element);
-    code.appendChild(element);
+    elementHead.appendChild(element)
+    eventList.appendChild(elementHead);
 }
 
 function selectOne(name){
@@ -79,7 +83,7 @@ function check_stuff(){
         var id = getID()[i];
         var parent = document.getElementById(id);
         var event = parent.childNodes;
-        var value = event[0].options[event[0].selectedIndex].value;
+        var value = event[1].options[event[1].selectedIndex].value;
 
         if (value == 0){
             var element = document.getElementById(id + "two");

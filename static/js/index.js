@@ -68,3 +68,6 @@ $("#menu-save").click(function(){
 $("#menu-run").click(function(){
     compile(data);
 });
+
+//document.getElementById("menu-save").style.order = [0];
+//document.getElementById("menu-run").style.order = [1];
