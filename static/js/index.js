@@ -20,26 +20,16 @@ code.style.height = window.innerHeight;
 });*/
 
 $("#LEVEL").dialog({
+    autoOpen: false,
     title: "LEVEL",
     position: {
-        my: "left bottom",
-        at: "left bottom"
+        my: "center center",
+        at: "center center"
     },
     width: 800,
     height: 600
 });
 
-$("#CODE").dialog({
-    title: "CODE",
-    position: {
-        my: "right center",
-        at: "right center"
-    },
-    width: 800,
-    height: 600,
-    minWidth: 800,
-    minHeight: 600
-});
 
 $("#menu").dialog({
     title: "MENU",
@@ -61,5 +51,15 @@ $("#menu-code").click(function(){
     $("#CODE").dialog("open");
 });
 
-var workspace = Blockly.inject('CODE',
-      {toolbox: document.getElementById('toolbox')});
+var workspace = Blockly.inject('CODE',{
+    toolbox: document.getElementById('toolbox'),
+    zoom: {
+        controls: true,
+        wheel: true,
+        startScale: 1.0,
+        maxScale: 3,
+        minScale: 0.3,
+        scaleSpeed: 1.2
+    },
+    trashcan: true
+});
