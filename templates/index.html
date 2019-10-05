@@ -27,28 +27,37 @@
 
     <script src="../static/events/blockly_compressed.js"></script>
     <script src="../static/events/blocks_compressed.js"></script>
-    <script src="../static/events/msg/js/en.js"></script>
+    <script src="../static/events/en.js"></script>
 
 <!---------------------------------------------------------------------------------------->
 <!-----------------------------------CLIENT-CODE------------------------------------------>
 <!---------------------------------------------------------------------------------------->
 
     <script src="../static/lib/editorCompiler.js"></script>
-    <script src="../static/js/engine/functions.js"></script>
-    <script src="../static/js/engine/clientHelper.js"></script>
 
     <link rel="stylesheet" href="../static/css/index.css">
 
     <title>EGB-ENGINE</title>
 </head>
 <body>
+
+<xml id="toolbox" style="display: none">
+  <block type="controls_if"></block>
+  <block type="controls_repeat_ext"></block>
+  <block type="logic_compare"></block>
+  <block type="math_number"></block>
+  <block type="math_arithmetic"></block>
+  <block type="text"></block>
+  <block type="text_print"></block>
+</xml>
+
     <div id="menu">
         <div id="menu-level" class="menu-button" style="width: 80px;">LEVEL</div>
         <div id="menu-code" class="menu-button" style="width: 80px;">CODE</div>
         <div id="menu-save" class="menu-button" style="width: 80px;">SAVE</div>
         <div id="menu-run" class="menu-button" style="width: 80px;">RUN</div>
     </div>
-    <div id="CODE"><ul id="EVENTS-PARENT"></ul></div>
+    <div id="CODE"></div>
     <div id="LEVEL">
         <canvas id="renderCanvas">YOUR BROWSER DOES NOT SUPPORT US!</canvas>
     </div>

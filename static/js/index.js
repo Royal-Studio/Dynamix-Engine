@@ -9,8 +9,6 @@ code.style.height = window.innerHeight;
         switch (String.fromCharCode(event.which).toLowerCase()) {
 
             case 's':
-                check_stuff();
-                data = saveData();
                 return false;
 
             case 'r':
@@ -62,10 +60,6 @@ $("#menu-level").click(function(){
 $("#menu-code").click(function(){
     $("#CODE").dialog("open");
 });
-/*
-$("#menu-save").click(function(){
-    check_stuff();
-});
-$("#menu-run").click(function(){
-    compile(data);
-});*/
+
+var workspace = Blockly.inject('CODE',
+      {toolbox: document.getElementById('toolbox')});
