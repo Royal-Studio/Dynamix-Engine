@@ -52,7 +52,7 @@ $("#menu-code").click(function(){
 });
 
 var workspace = Blockly.inject('CODE',{
-    toolbox: document.getElementById('toolbox'),
+    toolbox: MainToolBox,
     zoom: {
         controls: true,
         wheel: true,
