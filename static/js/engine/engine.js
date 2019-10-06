@@ -21,10 +21,6 @@ function createScene(){
 
     var light1 = new EGB.HemisphericLight('light1', new EGB.Vector3(1,1,0), scene);
 
-    //var code = 'var sphere  = new EGB.MeshBuilder.CreateSphere("sphere", {}, scene);var plane = EGB.MeshBuilder.CreateBox("myBox", {width: 15, height: 0.1, depth: 15}, scene);'
-    //localStorage.setItem("code", code);
-    eval(localStorage.getItem('code'));
-
     return scene;
 
 };

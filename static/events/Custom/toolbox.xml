@@ -291,6 +291,39 @@
       </block>
     </category>
     <sep></sep>
+
+
+
+    <category name="Engine" colour="#5ba58c">
+    <block type="box">
+      <field name="varname">myBox</field>
+      <value name="name">
+        <block type="text">
+          <field name="TEXT">My Box</field>
+        </block>
+      </value>
+      <value name="height">
+        <block type="math_number">
+          <field name="NUM">1</field>
+        </block>
+      </value>
+      <value name="width">
+        <block type="math_number">
+          <field name="NUM">1</field>
+        </block>
+      </value>
+    </block>
+    <block type="code">
+      <value name="code">
+        <block type="text">
+          <field name="TEXT"/>
+        </block>
+      </value>
+    </block>
+  </category>
+
+
+
     <category name="Variables" colour="330" custom="VARIABLE"></category>
     <category name="Functions" colour="290" custom="PROCEDURE"></category>
   </xml>
