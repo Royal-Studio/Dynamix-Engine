@@ -1,4 +1,4 @@
-![Logo](logo/linkedin_banner_image_1.png)
+![Logo](logo/logo_main.png)
 
 # Dynamix Engine
 A Game Engine For Humans! Built for [Royal Studios](https://discord.gg/g63g9zJ)!
