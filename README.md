@@ -1,6 +1,6 @@
 ![Logo](logo/linkedin_banner_image_1.png)
 
-# EGB-Engine
+# Dynamix Engine
 A Game Engine For Humans! Built for [Royal Studios](https://discord.gg/g63g9zJ)!
 
 The Project Is Under Development For Native 3D!
