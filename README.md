@@ -1,5 +1,7 @@
 ![Logo](logo/logo_main.png)
 
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+
 # Dynamix Engine
 A Game Engine For Humans! Built for [Royal Studios](https://discord.gg/g63g9zJ)!
 
