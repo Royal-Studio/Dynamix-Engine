@@ -9,10 +9,6 @@ The Project Is Under Development For Native 3D!
 
 ## Quick Links
 
-### By Continuing You Agree To My [EULA](https://github.com/ElhamAryanpur/EGB-Engine/blob/master/LICENSE.md)
-
-The project currently have EULA to protect the source code from being misused. This project will have Apache 2.0 license as soon as first official public full release!
-
 [Docs](https://elhamaryanpur.github.io/EGB-Engine/)
 
 [Progress](https://github.com/users/ElhamAryanpur/projects/1)
